@@ -16,7 +16,6 @@ import Footer from './components/Footer';
 import CartDrawer from './components/CartDrawer';
 import QuickView from './components/QuickView';
 import SearchOverlay from './components/SearchOverlay';
-import FloatingPetals from './components/FloatingPetals';
 import MobileOrderButton from './components/MobileOrderButton';
 import LoadingScreen from './components/LoadingScreen';
 import ScrollProgress from './components/ScrollProgress';
@@ -55,7 +54,6 @@ function App() {
       <LoadingScreen />
       <ScrollProgress />
       <CustomCursor />
-      <FloatingPetals />
       <Header />
 
       <main id="main-content">
