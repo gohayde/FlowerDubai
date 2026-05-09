@@ -144,7 +144,7 @@ export default function QuickView() {
                     marginBottom: '1.5rem',
                   }}
                 >
-                  {quickViewProduct.price} <span style={{ fontSize: '1rem', fontWeight: 400 }}>AED</span>
+                  {quickViewProduct.price} <span style={{ fontSize: '1rem', fontWeight: 400 }}>د.إ</span>
                 </p>
 
                 {/* Quantity */}
@@ -196,7 +196,7 @@ export default function QuickView() {
 
                 <button onClick={handleAdd} className="btn-primary" style={{ justifyContent: 'center' }}>
                   <ShoppingBag size={16} />
-                  <span>Add to Cart — {quickViewProduct.price * qty} AED</span>
+                  <span>Add to Cart — {quickViewProduct.price * qty} د.إ</span>
                 </button>
               </div>
             </div>

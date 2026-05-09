@@ -102,7 +102,7 @@ export default function Hero() {
         
         {/* TEXT COLUMN - Strictly on the Left */}
         <motion.div 
-          style={{ y: textY, opacity: textOpacity, maxWidth: '650px', paddingRight: '2rem', paddingTop: '8rem' }}
+          style={{ y: textY, opacity: textOpacity, maxWidth: '650px', paddingRight: '2rem', paddingTop: '5rem' }}
         >
           <motion.div
             initial={{ opacity: 0, y: 15 }}
@@ -171,41 +171,6 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Floating Notification - Top Right (Just like the inspiration image) */}
-        <motion.div
-          initial={{ opacity: 0, x: 40, filter: 'blur(10px)' }}
-          animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
-          transition={{ delay: 1.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          style={{
-            position: 'absolute',
-            top: '20%',
-            right: '2rem',
-            background: 'rgba(255, 255, 255, 0.15)',
-            backdropFilter: 'blur(24px)',
-            WebkitBackdropFilter: 'blur(24px)',
-            border: '1px solid rgba(255, 255, 255, 0.3)',
-            borderRadius: '1rem',
-            padding: '1rem 1.25rem',
-            display: 'flex',
-            gap: '1rem',
-            alignItems: 'flex-start',
-            boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
-            maxWidth: '320px',
-            zIndex: 30
-          }}
-          className="float-slow"
-        >
-          <div style={{ width: '1.5rem', height: '1.5rem', borderRadius: '50%', background: 'rgba(255,255,255,0.2)', border: '1px solid rgba(255,255,255,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-              <polyline points="22 4 12 14.01 9 11.01"></polyline>
-            </svg>
-          </div>
-          <div>
-            <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.75rem', fontWeight: 700, color: '#fff', textShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>Same-Day Delivery Available</p>
-            <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.6875rem', color: 'rgba(255,255,255,0.85)', marginTop: '0.25rem', lineHeight: 1.4 }}>Order before 5 PM for immediate delivery across Dubai.</p>
-          </div>
-        </motion.div>
 
       </div>
 

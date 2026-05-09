@@ -213,7 +213,7 @@ export default function BigBouquets() {
               }}
             >
               <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.5625rem', fontWeight: 700, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: '0.25rem' }}>From</p>
-              <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.875rem', fontWeight: 400, color: 'oklch(97% 0.008 55)', lineHeight: 1 }}>1,200 <span style={{ fontSize: '0.875rem', fontWeight: 300, opacity: 0.65 }}>AED</span></p>
+              <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.875rem', fontWeight: 400, color: 'oklch(97% 0.008 55)', lineHeight: 1 }}>1,200 <span style={{ fontSize: '0.875rem', fontWeight: 300, opacity: 0.65 }}>د.إ</span></p>
             </motion.div>
           </motion.div>
         </div>

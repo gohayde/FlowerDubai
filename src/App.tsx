@@ -8,13 +8,7 @@ import Hero from './components/Hero';
 import TrustBar from './components/TrustBar';
 import Categories from './components/Categories';
 import BestSellers from './components/BestSellers';
-import ImmediateDelivery from './components/ImmediateDelivery';
-import About from './components/About';
-import BigBouquets from './components/BigBouquets';
-import Chocolates from './components/Chocolates';
-import BuildGift from './components/BuildGift';
-import DeliveryAreas from './components/DeliveryAreas';
-import OfferBanner from './components/OfferBanner';
+import ExitIntentPopup from './components/ExitIntentPopup';
 import Reviews from './components/Reviews';
 import FAQ from './components/FAQ';
 import Contact from './components/Contact';
@@ -28,6 +22,8 @@ import LoadingScreen from './components/LoadingScreen';
 import ScrollProgress from './components/ScrollProgress';
 import CustomCursor from './components/CustomCursor';
 import BackToTop from './components/BackToTop';
+import WhatsAppWidget from './components/WhatsAppWidget';
+import DeliveryBanner from './components/DeliveryBanner';
 
 function App() {
   useGsapAnimations();
@@ -67,14 +63,8 @@ function App() {
         <TrustBar />
         <Categories />
         <BestSellers />
-        <ImmediateDelivery />
-        <About />
-        <BigBouquets />
-        <Chocolates />
-        <BuildGift />
-        <DeliveryAreas />
-        <OfferBanner />
         <Reviews />
+        <DeliveryBanner />
         <FAQ />
         <Contact />
       </main>
@@ -87,6 +77,8 @@ function App() {
       <SearchOverlay />
       <MobileOrderButton />
       <BackToTop />
+      <ExitIntentPopup />
+      <WhatsAppWidget />
     </>
   );
 }

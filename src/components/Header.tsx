@@ -61,7 +61,7 @@ export default function Header() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
         className="fixed top-0 left-0 right-0 z-50 flex justify-center"
-        style={{ padding: isScrolled ? '0.4rem 1rem' : '0.6rem 1.25rem' }}
+        style={{ padding: isScrolled ? '0.4rem 1rem' : '1.25rem 1.25rem' }}
       >
         <div
           className="transition-all duration-700"

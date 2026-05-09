@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type CSSProperties, type FormEvent } from 'react';
 import { motion } from 'motion/react';
 import { useInView } from '../hooks/useAnimations';
 import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react';
@@ -7,7 +7,7 @@ export default function Contact() {
   const { ref, isInView } = useInView();
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
   };
@@ -19,7 +19,7 @@ export default function Contact() {
     { icon: <Clock size={18} />, label: 'Everyday 9AM – 2AM', href: '#' },
   ];
 
-  const inputStyle: React.CSSProperties = {
+  const inputStyle: CSSProperties = {
     width: '100%',
     padding: '0.875rem 1rem',
     borderRadius: '0.875rem',

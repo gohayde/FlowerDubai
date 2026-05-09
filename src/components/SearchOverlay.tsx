@@ -169,7 +169,7 @@ export default function SearchOverlay() {
                         {product.name}
                       </p>
                       <p style={{ fontSize: '0.75rem', color: 'var(--color-muted)' }}>
-                        {product.category} · {product.price} AED
+                        {product.category} · {product.price} د.إ
                       </p>
                     </div>
                   </button>

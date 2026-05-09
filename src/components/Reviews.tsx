@@ -365,15 +365,14 @@ export default function Reviews() {
         </div>
       </div>
 
-      {/* Double-row staggered marquee */}
+      {/* Single marquee row */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : {}}
         transition={{ delay: 0.35, duration: 0.8 }}
-        style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', position: 'relative', zIndex: 1 }}
+        style={{ position: 'relative', zIndex: 1 }}
       >
         <MarqueeRow items={ROW_A} duration="56s" />
-        <MarqueeRow items={ROW_B} reverse duration="48s" />
       </motion.div>
 
       <style>{`

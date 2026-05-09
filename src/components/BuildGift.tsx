@@ -258,7 +258,7 @@ export default function BuildGift() {
                 marginBottom: '1.5rem',
               }}
             >
-              {price} <span style={{ fontSize: '1rem', fontWeight: 400 }}>AED</span>
+              {price} <span style={{ fontSize: '1rem', fontWeight: 400 }}>د.إ</span>
             </motion.p>
             <button className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
               <span>Continue to order</span>

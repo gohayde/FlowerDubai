@@ -174,7 +174,7 @@ export default function CartDrawer() {
                             {item.product.name}
                           </p>
                           <p style={{ fontSize: '0.8125rem', color: 'var(--color-muted)' }}>
-                            {item.product.price} AED
+                            {item.product.price} د.إ
                           </p>
                         </div>
                         <div className="flex items-center justify-between">
@@ -283,7 +283,7 @@ export default function CartDrawer() {
                       color: 'var(--color-charcoal)',
                     }}
                   >
-                    {totalPrice().toLocaleString()} AED
+                    {totalPrice().toLocaleString()} د.إ
                   </span>
                 </div>
                 <button className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>

@@ -3,39 +3,33 @@ import { motion } from 'motion/react';
 import gsap from 'gsap';
 
 const ITEMS = [
-  { value: 'Quality Guaranteed', label: 'Our Flowers are sourced daily so we guarantee your loved ones the best scent.', highlight: true },
-  { value: 'Immediate Delivery', label: 'We are the only stores in dubai to offer immediate delivery.', highlight: true },
-  { value: 'Best Safety', label: 'All of our flowers and chocolates are sourced from the best locations on the planet.', highlight: false },
+  'Same-day Dubai delivery',
+  'Fresh premium roses',
+  'Urban Rose packaging',
+  'Handwritten message cards',
+  'Custom bouquet styling',
+  'Flowers, chocolates, and gifts',
 ];
 
-/* duplicate 4× so the loop is seamless (50% translation matches exactly 2 items) */
-const TRACK = [...ITEMS, ...ITEMS, ...ITEMS, ...ITEMS];
+const TRACK1 = [...ITEMS, ...ITEMS, ...ITEMS, ...ITEMS];
 
-const Dot = () => (
+const Separator = () => (
   <span
     aria-hidden="true"
     style={{
       display: 'inline-block',
-      width: '4px',
-      height: '4px',
+      width: '5px',
+      height: '5px',
       borderRadius: '50%',
-      background: 'oklch(82% 0.065 10 / 0.4)',
+      background: 'oklch(74% 0.09 70 / 0.55)',
       flexShrink: 0,
-      margin: '0 3rem',
+      margin: '0 2rem',
       verticalAlign: 'middle',
     }}
   />
 );
 
-const TrackItem = memo(function TrackItem({
-  value,
-  label,
-  highlight,
-}: {
-  value: string;
-  label: string;
-  highlight: boolean;
-}) {
+const TrackItem = memo(function TrackItem({ text }: { text: string }) {
   return (
     <span
       style={{
@@ -49,86 +43,77 @@ const TrackItem = memo(function TrackItem({
         style={{
           display: 'inline-flex',
           alignItems: 'center',
-          gap: '0.75rem',
-          position: 'relative',
+          gap: '0.7rem',
         }}
       >
         <span
           style={{
-            fontFamily: 'var(--font-serif)',
-            fontSize: 'clamp(1rem, 2vw, 1.25rem)',
-            fontWeight: 400,
+            width: '0.45rem',
+            height: '0.45rem',
+            borderRadius: '50%',
+            background: 'var(--color-gold)',
+            boxShadow: '0 0 0 0.32rem oklch(72% 0.085 80 / 0.10)',
             lineHeight: 1,
-            letterSpacing: '0.02em',
-            color: highlight
-              ? 'var(--color-gold)'
-              : 'oklch(78% 0.055 10)',
-            textTransform: 'uppercase',
-            /* Subtle shimmer on highlighted values */
-            ...(highlight ? {
-              background: 'linear-gradient(90deg, oklch(68% 0.075 80), oklch(78% 0.095 75), oklch(72% 0.085 80))',
-              backgroundSize: '200% auto',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              animation: 'trustShimmer 3.5s linear infinite',
-            } : {}),
           }}
-        >
-          {value}
-        </span>
+        />
         <span
           style={{
-            fontFamily: 'var(--font-sans)',
-            fontSize: '0.875rem',
-            fontWeight: 400,
-            color: 'rgba(255,255,255,0.6)',
+            fontFamily: 'var(--font-serif)',
+            fontSize: 'clamp(1.05rem, 1.8vw, 1.35rem)',
+            fontWeight: 500,
             letterSpacing: '0.02em',
+            color: 'oklch(95% 0.01 60)',
+            textTransform: 'none',
           }}
         >
-          {label}
+          {text}
         </span>
       </span>
-      <Dot />
+      <Separator />
     </span>
   );
 });
 
-const MarqueeTrack = memo(function MarqueeTrack({ reverse = false }: { reverse?: boolean }) {
+const MarqueeRow = memo(function MarqueeRow({
+  items,
+  reverse = false,
+  duration = 38,
+}: {
+  items: string[];
+  reverse?: boolean;
+  duration?: number;
+}) {
   const trackRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!trackRef.current) return;
     const track = trackRef.current;
-    
-    // Calculate total width of one half of the track (since items are duplicated)
-    // We'll let GSAP tween it.
-    let ctx = gsap.context(() => {
+    const ctx = gsap.context(() => {
       gsap.to(track, {
         xPercent: reverse ? 50 : -50,
         ease: 'none',
-        duration: 38,
+        duration,
         repeat: -1,
       });
     });
-
     return () => ctx.revert();
-  }, [reverse]);
+  }, [reverse, duration]);
 
   return (
-    <div
-      ref={trackRef}
-      style={{
-        display: 'flex',
-        gap: 0,
-        willChange: 'transform',
-        flexShrink: 0,
-        width: 'max-content',
-      }}
-    >
-      {TRACK.map((item, i) => (
-        <TrackItem key={i} {...item} />
-      ))}
+    <div style={{ overflow: 'hidden', position: 'relative' }}>
+      <div
+        ref={trackRef}
+        style={{
+          display: 'flex',
+          willChange: 'transform',
+          flexShrink: 0,
+          width: 'max-content',
+        }}
+      >
+        {items.map((item, i) => (
+          <TrackItem key={i} text={item} />
+        ))}
+      </div>
     </div>
   );
 });
@@ -138,7 +123,7 @@ export default function TrustBar() {
     <section
       style={{
         background: 'var(--color-charcoal)',
-        padding: 'clamp(1.5rem, 3vw, 2.25rem) 0',
+        padding: 'clamp(1rem, 2vw, 1.45rem) 0',
         overflow: 'hidden',
         position: 'relative',
       }}
@@ -150,7 +135,7 @@ export default function TrustBar() {
           position: 'absolute',
           top: 0, left: 0, right: 0,
           height: '1px',
-          background: 'linear-gradient(to right, transparent, oklch(82% 0.065 10 / 0.12), transparent)',
+          background: 'linear-gradient(to right, transparent, oklch(72% 0.085 80 / 0.18), transparent)',
         }}
       />
       {/* Bottom hairline */}
@@ -160,7 +145,7 @@ export default function TrustBar() {
           position: 'absolute',
           bottom: 0, left: 0, right: 0,
           height: '1px',
-          background: 'linear-gradient(to right, transparent, oklch(82% 0.065 10 / 0.10), transparent)',
+          background: 'linear-gradient(to right, transparent, oklch(72% 0.085 80 / 0.14), transparent)',
         }}
       />
 
@@ -189,33 +174,10 @@ export default function TrustBar() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.9 }}
-        style={{ display: 'flex', width: 'max-content' }}
+        style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(0.625rem, 1.2vw, 0.875rem)' }}
       >
-        <MarqueeTrack />
-        <MarqueeTrack />
+        <MarqueeRow items={TRACK1} reverse={false} duration={62} />
       </motion.div>
-
-      <style>{`
-        @keyframes trustScrollRev {
-          from { transform: translateX(-50%); }
-          to   { transform: translateX(0); }
-        }
-        @keyframes trustScroll {
-          from { transform: translateX(0); }
-          to   { transform: translateX(-50%); }
-        }
-        @keyframes trustShimmer {
-          from { background-position: 200% center; }
-          to   { background-position: -200% center; }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          @keyframes trustScroll    { from { transform: none; } to { transform: none; } }
-          @keyframes trustScrollRev { from { transform: none; } to { transform: none; } }
-          @keyframes trustShimmer   { from { background-position: 0 center; } to { background-position: 0 center; } }
-        }
-      `}</style>
     </section>
   );
 }
-
-

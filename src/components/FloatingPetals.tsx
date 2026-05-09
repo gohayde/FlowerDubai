@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type CSSProperties } from 'react';
 
 interface Petal {
   id: number;
@@ -19,7 +19,7 @@ const PETAL_COLORS = [
   'rgba(201, 168, 76, 0.25)',
 ];
 
-type PetalStyle = React.CSSProperties & {
+type PetalStyle = CSSProperties & {
   '--drift': string;
   '--drift-half': string;
 };

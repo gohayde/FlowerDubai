@@ -1,36 +1,13 @@
-import { useState, memo } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useInView } from '../hooks/useAnimations';
-import { Heart, Eye, ShoppingBag, Check } from 'lucide-react';
+import { Heart, ShoppingBag, Check } from 'lucide-react';
 import { products } from '../data/products';
 import { useCartStore } from '../store/cartStore';
 
-/* ─── Luxury card — elegant, refined shadow ─── */
-const LuxuryCard = memo(function LuxuryCard({ children }: { children: React.ReactNode }) {
-  return (
-    <motion.div
-      whileHover={{ y: -8 }}
-      transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-      style={{
-        position: 'relative',
-        background: '#fff',
-        borderRadius: '1rem',
-        overflow: 'hidden',
-        boxShadow: '0 10px 40px -10px rgba(0,0,0,0.08)',
-        border: '1px solid rgba(0,0,0,0.03)',
-        display: 'flex',
-        flexDirection: 'column',
-        height: '100%',
-      }}
-    >
-      {children}
-    </motion.div>
-  );
-});
-
 export default function BestSellers() {
   const { ref, isInView } = useInView();
-  const { addItem, openQuickView, openCart } = useCartStore();
+  const { addItem, openCart } = useCartStore();
   const [favorites, setFavorites] = useState<Set<string>>(new Set());
   const [addedId, setAddedId]     = useState<string | null>(null);
 
@@ -92,179 +69,97 @@ export default function BestSellers() {
 
       <div className="container-main" style={{ position: 'relative', zIndex: 1 }}>
         {/* Section header */}
-        <div className="bestsellers-header" style={{ marginBottom: 'clamp(3rem, 6vw, 5rem)' }}>
-          <div>
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
-              style={{ fontFamily: 'var(--font-sans)', fontSize: '0.6875rem', letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 600, color: 'var(--color-rose)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}
-            >
-              <span style={{ display: 'inline-block', width: '1.5rem', height: '1px', background: 'var(--color-rose)', flexShrink: 0 }} />
-              Most Loved
-            </motion.p>
-            <motion.h2
-              initial={{ opacity: 0, y: 28 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.1, duration: 0.75, ease: [0.32, 0.72, 0, 1] }}
-              style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(2.25rem, 4.5vw, 4rem)', fontWeight: 400, lineHeight: 1.05, letterSpacing: '-0.02em', color: 'var(--color-charcoal)' }}
-            >
-              Best Sellers
-            </motion.h2>
-          </div>
+        <div style={{ marginBottom: 'clamp(3rem, 6vw, 5rem)' }}>
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
+            style={{ fontFamily: 'var(--font-sans)', fontSize: '0.6875rem', letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 600, color: 'var(--color-rose)', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}
+          >
+            <span style={{ display: 'inline-block', width: '1.5rem', height: '1px', background: 'var(--color-rose)', flexShrink: 0 }} />
+            Most Loved
+          </motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 28 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.1, duration: 0.75, ease: [0.32, 0.72, 0, 1] }}
+            style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(2.25rem, 4.5vw, 4rem)', fontWeight: 400, lineHeight: 1.05, letterSpacing: '-0.02em', color: 'var(--color-charcoal)', marginBottom: '1rem' }}
+          >
+            Best Sellers
+          </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 18 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2, duration: 0.65, ease: [0.32, 0.72, 0, 1] }}
-            style={{ fontFamily: 'var(--font-sans)', fontSize: '0.9375rem', lineHeight: 1.75, color: 'var(--color-muted)', maxWidth: '380px', alignSelf: 'flex-end' }}
+            style={{ fontFamily: 'var(--font-sans)', fontSize: '0.9375rem', lineHeight: 1.75, color: 'var(--color-muted)', maxWidth: '480px' }}
           >
             Fresh arrangements and gifts our customers order again and again.
           </motion.p>
         </div>
 
-        {/* Bento grid */}
-        <div className="bento-grid">
-          {featured.map((product, i) => {
-            return (
-              <motion.div
-                key={product.id}
-                initial={{ opacity: 0, y: 44 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.07 + i * 0.075, duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
-                className="bento-card"
-                style={{ height: '100%' }}
+        {/* Product grid */}
+        <div className="product-grid">
+          {featured.map((product, i) => (
+            <motion.div
+              key={product.id}
+              className="product-card"
+              initial={{ opacity: 0, y: 40 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.07 + i * 0.08, duration: 0.75, ease: [0.32, 0.72, 0, 1] }}
+              whileHover={{ y: -6 }}
+            >
+              {/* Fav button */}
+              <button
+                className="fav-btn"
+                onClick={(e) => { e.stopPropagation(); toggleFav(product.id); }}
+                aria-label={`Favourite ${product.name}`}
               >
-                <LuxuryCard>
-                  {/* Image area */}
-                  <div
-                    style={{
-                      position: 'relative',
-                      flex: '0 0 auto',
-                      aspectRatio: '4/5',
-                      background: 'radial-gradient(circle at center, #ffffff 0%, var(--color-warm-white) 100%)',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      overflow: 'hidden',
-                      padding: '2rem',
-                    }}
-                  >
-                    {product.badge && (
-                      <span style={{
-                        position: 'absolute', top: '0.875rem', left: '0.875rem', zIndex: 10,
-                        padding: '0.25rem 0.65rem', borderRadius: '9999px',
-                        background: 'var(--color-charcoal)', color: 'white',
-                        fontSize: '0.5625rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
-                        fontFamily: 'var(--font-sans)',
-                      }}>
-                        {product.badge}
-                      </span>
+                <Heart size={13} fill={favorites.has(product.id) ? '#c8566b' : 'none'} stroke={favorites.has(product.id) ? '#c8566b' : '#aaa'} strokeWidth={1.5} />
+              </button>
+
+              {/* Circular image blob */}
+              <div className="product-img-wrap">
+                <div className="product-circle" />
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  loading="lazy"
+                  className="product-img"
+                />
+              </div>
+
+              {/* Info */}
+              <div className="product-info">
+                <p className="product-category">{product.category}</p>
+                <h3 className="product-name">{product.name}</h3>
+
+                <div className="product-price-row">
+                  <div className="product-prices">
+                    <span className="price-current">د.إ {product.price.toLocaleString()}</span>
+                    {product.oldPrice && (
+                      <span className="price-old">د.إ {product.oldPrice.toLocaleString()}</span>
                     )}
-
-                    <button
-                      onClick={(e) => { e.stopPropagation(); toggleFav(product.id); }}
-                      aria-label={`Favourite ${product.name}`}
-                      style={{
-                        position: 'absolute', top: '0.875rem', right: '0.875rem', zIndex: 10,
-                        width: '2.125rem', height: '2.125rem', borderRadius: '50%',
-                        background: 'rgba(255,255,255,0.88)',
-                        backdropFilter: 'blur(10px)',
-                        border: '1px solid rgba(248,184,197,0.2)',
-                        cursor: 'pointer',
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        color: favorites.has(product.id) ? 'var(--color-rose)' : 'var(--color-muted)',
-                        transition: 'all 300ms cubic-bezier(0.32,0.72,0,1)',
-                      }}
-                    >
-                      <Heart size={12} fill={favorites.has(product.id) ? 'var(--color-rose)' : 'none'} strokeWidth={1.5} />
-                    </button>
-
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      loading="lazy"
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'contain',
-                        transition: 'transform 800ms cubic-bezier(0.16,1,0.3,1)',
-                        display: 'block',
-                        position: 'relative',
-                        zIndex: 1,
-                        filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.15))'
-                      }}
-                      className="product-img"
-                    />
-
-                    <button
-                      onClick={() => openQuickView(product)}
-                      className="quick-view-btn"
-                      style={{
-                        position: 'absolute', bottom: '1.5rem', left: '50%',
-                        transform: 'translateX(-50%) translateY(10px)',
-                        padding: '0.6rem 1.25rem', borderRadius: '9999px',
-                        background: 'rgba(255,255,255,0.98)',
-                        backdropFilter: 'blur(12px)',
-                        border: '1px solid rgba(24,16,8,0.07)',
-                        cursor: 'pointer',
-                        fontSize: '0.6875rem', fontWeight: 600, fontFamily: 'var(--font-sans)',
-                        color: 'var(--color-charcoal)',
-                        display: 'flex', alignItems: 'center', gap: '0.375rem',
-                        whiteSpace: 'nowrap', opacity: 0,
-                        transition: 'opacity 400ms cubic-bezier(0.16,1,0.3,1), transform 400ms cubic-bezier(0.16,1,0.3,1)',
-                        letterSpacing: '0.05em',
-                        textTransform: 'uppercase',
-                        boxShadow: '0 4px 20px rgba(24,16,8,0.08)',
-                        zIndex: 20
-                      }}
-                    >
-                      <Eye size={14} strokeWidth={1.5} />
-                      Quick View
-                    </button>
                   </div>
 
-                  {/* Info */}
-                  <div style={{ padding: '1.5rem', borderTop: '1px solid rgba(24,16,8,0.03)', flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
-                    <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.5625rem', letterSpacing: '0.15em', textTransform: 'uppercase', fontWeight: 600, color: 'var(--color-muted)', marginBottom: '0.3rem', opacity: 0.65 }}>
-                      {product.category}
-                    </p>
-                    <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.125rem', fontWeight: 500, color: 'var(--color-charcoal)', lineHeight: 1.25, letterSpacing: '-0.01em' }}>
-                      {product.name}
-                    </h3>
-
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '0.9rem' }}>
-                      <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.5rem' }}>
-                        <span style={{ fontFamily: 'var(--font-serif)', fontSize: '1.125rem', fontWeight: 500, color: 'var(--color-charcoal)' }}>
-                          {product.price.toLocaleString()} AED
-                        </span>
-                        {product.oldPrice && (
-                          <span style={{ fontFamily: 'var(--font-sans)', fontSize: '0.8125rem', color: 'var(--color-muted)', textDecoration: 'line-through', opacity: 0.55 }}>
-                            {product.oldPrice.toLocaleString()}
-                          </span>
-                        )}
-                      </div>
-
-                      <AnimatePresence mode="wait">
-                        {addedId === product.id ? (
-                          <motion.div key="added" initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }}
-                            style={{ width: '2.25rem', height: '2.25rem', borderRadius: '50%', background: 'var(--color-wine)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white' }}>
-                            <Check size={14} strokeWidth={2.5} />
-                          </motion.div>
-                        ) : (
-                          <motion.button key="add" whileTap={{ scale: 0.91 }}
-                            onClick={() => handleAdd(product)}
-                            aria-label={`Add ${product.name} to cart`}
-                            className="add-to-cart-btn"
-                            style={{ width: '2.25rem', height: '2.25rem', borderRadius: '50%', background: 'var(--color-cream)', border: '1px solid rgba(24,16,8,0.08)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-charcoal)', transition: 'all 350ms cubic-bezier(0.32,0.72,0,1)' }}
-                          >
-                            <ShoppingBag size={14} strokeWidth={1.5} />
-                          </motion.button>
-                        )}
-                      </AnimatePresence>
-                    </div>
-                  </div>
-                </LuxuryCard>
-              </motion.div>
-            );
-          })}
+                  <AnimatePresence mode="wait">
+                    {addedId === product.id ? (
+                      <motion.div key="added" initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }}
+                        className="cart-added">
+                        <Check size={13} strokeWidth={2.5} />
+                      </motion.div>
+                    ) : (
+                      <motion.button key="add" whileTap={{ scale: 0.88 }}
+                        onClick={() => handleAdd(product)}
+                        aria-label={`Add ${product.name} to cart`}
+                        className="cart-btn">
+                        <ShoppingBag size={13} strokeWidth={1.5} />
+                      </motion.button>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
 
         {/* View all */}
@@ -284,42 +179,162 @@ export default function BestSellers() {
       </div>
 
       <style>{`
-        .bestsellers-header {
+        /* ── Grid ── */
+        .product-grid {
           display: grid;
-          grid-template-columns: 1fr;
-          gap: 2rem;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1.5rem 1.25rem;
         }
         @media (min-width: 768px) {
-          .bestsellers-header {
-            grid-template-columns: 1fr 1fr;
-            align-items: flex-end;
-          }
+          .product-grid { grid-template-columns: repeat(3, 1fr); gap: 2rem 1.75rem; }
         }
-        .bento-grid {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 1.25rem;
+
+        /* ── Card ── */
+        .product-card {
+          position: relative;
+          background: transparent;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          cursor: pointer;
         }
-        @media (min-width: 640px) {
-          .bento-grid { grid-template-columns: repeat(2, 1fr); }
-          .bento-hero { grid-column: span 2; }
+
+        /* ── Fav ── */
+        .fav-btn {
+          position: absolute;
+          top: 0.5rem;
+          right: 0.5rem;
+          z-index: 10;
+          width: 2rem;
+          height: 2rem;
+          border-radius: 50%;
+          background: rgba(255,255,255,0.85);
+          border: none;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+          transition: transform 250ms;
         }
-        @media (min-width: 960px) {
-          .bento-grid {
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-          }
+        .fav-btn:hover { transform: scale(1.15); }
+
+        /* ── Circle blob behind image ── */
+        .product-img-wrap {
+          position: relative;
+          width: 100%;
+          padding-bottom: 90%;
+          margin-bottom: 1.25rem;
         }
-        .bento-card:hover .product-img { transform: scale(1.05) rotate(0.4deg); }
-        .bento-card:hover .quick-view-btn {
-          opacity: 1 !important;
-          transform: translateX(-50%) translateY(0) !important;
+        .product-circle {
+          position: absolute;
+          inset: 10% 10% 0;
+          border-radius: 50%;
+          background: radial-gradient(circle at 40% 45%, #f9d8e0 0%, #f5c2d0 60%, #efafc2 100%);
+          z-index: 0;
         }
-        .add-to-cart-btn:hover {
-          background: var(--color-charcoal) !important;
-          color: white !important;
-          border-color: var(--color-charcoal) !important;
+        .product-img {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          z-index: 1;
+          filter: drop-shadow(0 18px 32px rgba(0,0,0,0.18));
+          transition: transform 700ms cubic-bezier(0.16,1,0.3,1);
         }
+        .product-card:hover .product-img {
+          transform: scale(1.06) translateY(-4px);
+        }
+
+        /* ── Info ── */
+        .product-info {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.2rem;
+        }
+        .product-category {
+          font-family: var(--font-sans);
+          font-size: 0.6875rem;
+          font-weight: 500;
+          color: var(--color-muted);
+          letter-spacing: 0.04em;
+          text-transform: none;
+          opacity: 0.75;
+        }
+        .product-name {
+          font-family: var(--font-serif);
+          font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+          font-weight: 600;
+          font-style: italic;
+          color: #c8566b;
+          line-height: 1.2;
+          letter-spacing: -0.01em;
+        }
+        .product-price-row {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.75rem;
+          margin-top: 0.4rem;
+          width: 100%;
+        }
+        .product-prices {
+          display: flex;
+          align-items: baseline;
+          gap: 0.5rem;
+        }
+        .price-current {
+          font-family: var(--font-sans);
+          font-size: 1rem;
+          font-weight: 700;
+          color: var(--color-charcoal);
+        }
+        .price-old {
+          font-family: var(--font-sans);
+          font-size: 0.8125rem;
+          color: var(--color-muted);
+          text-decoration: line-through;
+          opacity: 0.55;
+        }
+
+        /* ── Cart btn ── */
+        .cart-btn {
+          width: 2rem;
+          height: 2rem;
+          border-radius: 50%;
+          background: white;
+          border: 1px solid rgba(24,16,8,0.09);
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--color-charcoal);
+          box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+          transition: all 300ms;
+          flex-shrink: 0;
+        }
+        .cart-btn:hover {
+          background: #c8566b;
+          color: white;
+          border-color: #c8566b;
+        }
+        .cart-added {
+          width: 2rem;
+          height: 2rem;
+          border-radius: 50%;
+          background: #c8566b;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          flex-shrink: 0;
+        }
+
+        /* ── View all ── */
         .view-all-link {
           display: inline-flex;
           align-items: center;
@@ -333,7 +348,7 @@ export default function BestSellers() {
           text-decoration: none;
           border-bottom: 1px solid rgba(24,16,8,0.18);
           padding-bottom: 0.25rem;
-          transition: border-color 400ms cubic-bezier(0.32,0.72,0,1), gap 400ms;
+          transition: border-color 400ms, gap 400ms;
         }
         .view-all-link:hover { border-color: var(--color-charcoal); gap: 1.1rem; }
       `}</style>

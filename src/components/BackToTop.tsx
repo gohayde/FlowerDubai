@@ -7,6 +7,7 @@ export default function BackToTop() {
   useEffect(() => {
     const handle = () => setShow(window.scrollY > 600);
     window.addEventListener('scroll', handle, { passive: true });
+    handle();
     return () => window.removeEventListener('scroll', handle);
   }, []);
 
@@ -22,11 +23,11 @@ export default function BackToTop() {
           aria-label="Back to top"
           style={{
             position: 'fixed',
-            bottom: '5rem',
-            right: '1.5rem',
-            zIndex: 40,
-            width: '3rem',
-            height: '3rem',
+            bottom: 'calc(1.75rem + 3.25rem + 0.75rem)',
+            right: '1.75rem',
+            zIndex: 9000,
+            width: '3.25rem',
+            height: '3.25rem',
             borderRadius: '50%',
             background: 'white',
             border: '1.5px solid rgba(248,184,197,0.35)',
@@ -39,8 +40,7 @@ export default function BackToTop() {
           whileHover={{ scale: 1.1, boxShadow: '0 8px 30px rgba(248,184,197,0.3)' }}
           whileTap={{ scale: 0.95 }}
         >
-          {/* Rose SVG */}
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 20V4M5 11l7-7 7 7" stroke="var(--color-rose)" strokeWidth="1.75"
               strokeLinecap="round" strokeLinejoin="round" />
           </svg>
@@ -49,5 +49,3 @@ export default function BackToTop() {
     </AnimatePresence>
   );
 }
-
-
