@@ -257,6 +257,8 @@ export default function Reviews() {
       className="section-padding"
       style={{
         background: 'var(--color-warm-white)',
+        paddingTop: 'clamp(2.5rem, 5vw, 4rem)',
+        paddingBottom: 'clamp(3.75rem, 7vw, 5.5rem)',
         overflow: 'hidden',
         position: 'relative',
       }}
@@ -288,7 +290,7 @@ export default function Reviews() {
       {/* Header */}
       <div
         className="container-main"
-        style={{ marginBottom: 'clamp(2.5rem, 5vw, 4rem)', position: 'relative', zIndex: 1 }}
+        style={{ marginBottom: 'clamp(1.75rem, 3vw, 2.75rem)', position: 'relative', zIndex: 1 }}
       >
         <div
           style={{

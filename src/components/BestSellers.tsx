@@ -38,7 +38,7 @@ export default function BestSellers() {
       style={{
         background: 'var(--color-warm-white)',
         paddingTop: 'clamp(5rem, 10vw, 8rem)',
-        paddingBottom: 'clamp(5rem, 10vw, 8rem)',
+        paddingBottom: 'clamp(2.75rem, 5vw, 4rem)',
         position: 'relative',
         overflow: 'hidden',
       }}

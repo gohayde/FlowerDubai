@@ -37,8 +37,8 @@ export default function DeliveryBanner() {
           style={{
             borderRadius: '2rem',
             backgroundImage: 'linear-gradient(90deg, rgba(255, 251, 246, 0.03) 0%, rgba(255, 251, 246, 0.08) 45%, rgba(255, 251, 246, 0.76) 67%, rgba(255, 251, 246, 0.91) 100%), url("/Media/Delivery.png")',
-            backgroundSize: '94% auto',
-            backgroundPosition: 'center 48%',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
             overflow: 'hidden',
             position: 'relative',
@@ -186,7 +186,7 @@ export default function DeliveryBanner() {
         @media (max-width: 640px) {
           .delivery-banner-grid {
             background-image: linear-gradient(180deg, rgba(255, 251, 246, 0.08) 0%, rgba(255, 251, 246, 0.92) 58%, rgba(255, 251, 246, 0.98) 100%), url("/Media/Delivery.png") !important;
-            background-size: auto 78% !important;
+            background-size: cover !important;
             background-position: 27% center !important;
           }
           .delivery-banner-copy {
