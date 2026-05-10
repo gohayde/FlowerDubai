@@ -75,7 +75,7 @@ export default function Footer() {
           <div style={{ maxWidth: '280px' }}>
             <div style={{ marginBottom: '1.375rem' }}>
               <img
-                src="/Media/Logo.png"
+                src="/Media/Logo-small.webp"
                 alt="Flower Dubai"
                 loading="lazy"
                 decoding="async"

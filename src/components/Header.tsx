@@ -88,7 +88,7 @@ export default function Header() {
           {/* Logo — left */}
           <a href="#home" className="flex items-center gap-2 no-underline flex-shrink-0">
             <img
-              src="/Media/Logo.png"
+              src="/Media/Logo-small.webp"
               alt="Flower Dubai logo"
               decoding="async"
               fetchPriority="high"
@@ -356,7 +356,7 @@ export default function Header() {
               <div className="flex items-center justify-between">
                 <a href="#home" className="flex items-center gap-2 no-underline" onClick={() => setIsMobileOpen(false)}>
                   <img
-                    src="/Media/Logo.png"
+                    src="/Media/Logo-small.webp"
                     alt="Flower Dubai logo"
                     decoding="async"
                     style={{ height: '2rem', width: 'auto', objectFit: 'contain', mixBlendMode: 'multiply' }}

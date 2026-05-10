@@ -6,9 +6,9 @@ export default function LoadingScreen() {
   const [phase, setPhase] = useState<'bloom' | 'text' | 'exit'>('bloom');
 
   useEffect(() => {
-    const t1 = setTimeout(() => setPhase('text'), 900);
-    const t2 = setTimeout(() => setPhase('exit'), 2200);
-    const t3 = setTimeout(() => setVisible(false), 3000);
+    const t1 = setTimeout(() => setPhase('text'), 250);
+    const t2 = setTimeout(() => setPhase('exit'), 650);
+    const t3 = setTimeout(() => setVisible(false), 900);
     return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
   }, []);
 
@@ -35,13 +35,14 @@ export default function LoadingScreen() {
           {/* Logo animation */}
           <div style={{ position: 'relative', width: 'auto', height: '120px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <motion.img
-              src="/Media/Logo.png"
+              src="/Media/Logo-small.webp"
               alt="Flower Dubai logo"
               decoding="async"
+              fetchPriority="high"
               initial={{ scale: 0.9, opacity: 0 }}
               animate={phase !== 'exit' ? { scale: 1, opacity: 1 } : { scale: 1.05, opacity: 0 }}
               transition={{
-                duration: 1.2,
+                duration: 0.45,
                 ease: [0.16, 1, 0.3, 1],
               }}
               style={{
@@ -63,7 +64,7 @@ export default function LoadingScreen() {
             }}
             initial={{ width: '0%' }}
             animate={{ width: '100%' }}
-            transition={{ duration: 2.5, ease: 'easeInOut' }}
+            transition={{ duration: 0.75, ease: 'easeInOut' }}
           />
         </motion.div>
       )}
