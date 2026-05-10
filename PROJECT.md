@@ -16,10 +16,10 @@ A single-page e-commerce landing site for **Flower Dubai** (brand: Urban Rose), 
 | Tool | Version | Role |
 |---|---|---|
 | React | 19 | UI framework |
-| TypeScript | ~6.0 | Type safety |
-| Vite | 8 | Build tool / dev server |
+| TypeScript | ~5.8 | Type safety |
+| Vite | 6 | Build tool / dev server |
 | Tailwind CSS | 4 | Utility-first styling |
-| GSAP + @gsap/react | 3.15 | Scroll-triggered animations |
+| GSAP | 3.15 | Scroll-triggered animations |
 | Motion (Framer) | 12 | Component-level animations |
 | Lenis | 1.3 | Smooth scroll |
 | Zustand | 5 | Global cart/UI state |
@@ -63,7 +63,6 @@ src/
     ├── CartDrawer.tsx        # Slide-out cart sidebar
     ├── QuickView.tsx         # Product quick-view modal
     ├── SearchOverlay.tsx     # Full-screen search overlay
-    ├── FloatingPetals.tsx    # Ambient animated petal background
     └── MobileOrderButton.tsx # Sticky CTA button for mobile
 ```
 
@@ -105,18 +104,17 @@ Single store manages:
 ---
 
 ## Page Section Order (App.tsx)
-1. FloatingPetals (ambient layer)
-2. Header
-3. Hero → TrustBar → Categories → BestSellers → ImmediateDelivery → About → BigBouquets → Chocolates → BuildGift → Gallery → DeliveryAreas → OfferBanner → Reviews → FAQ → Contact
-4. Footer
-5. Overlays: CartDrawer, QuickView, SearchOverlay, MobileOrderButton
+1. Header
+2. Hero → TrustBar → Categories → BestSellers → Reviews → DeliveryBanner → FAQ → Contact
+3. Footer
+4. Overlays: CartDrawer, QuickView, SearchOverlay, MobileOrderButton, ExitIntentPopup, WhatsAppWidget
 
 ---
 
 ## Dev Commands
 ```bash
-npm run dev      # start dev server (localhost:5173)
-npm run build    # TypeScript check + Vite production build
+npm run dev      # start dev server (localhost:3000)
+npm run build    # Vite production build
 npm run preview  # preview production build
-npm run lint     # ESLint
+npm run lint     # TypeScript check
 ```

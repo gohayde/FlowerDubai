@@ -155,7 +155,6 @@ Three variants. All pill-shaped (border-radius: 9999px).
 
 ```css
 --ease-bloom: cubic-bezier(0.32, 0.72, 0, 1);   /* Primary: ease-out-expo feel */
---ease-petal: cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Secondary: ease-out-quart */
 ```
 
 ### Principles
