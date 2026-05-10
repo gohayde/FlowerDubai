@@ -39,7 +39,7 @@ const DeliveryBg = memo(function DeliveryBg() {
         className="ken-burns"
         style={{
           position: 'absolute', inset: '-8%',
-          backgroundImage: 'url(/images/sections/delivery-bg.jpg)',
+          backgroundImage: 'url(/images/hero/delivery-bouquet.webp)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           opacity: 0.12,
@@ -192,7 +192,7 @@ export default function ImmediateDelivery() {
                 className="ken-burns"
                 style={{
                   position: 'absolute', inset: '-8%',
-                  backgroundImage: 'url(/images/sections/delivery-bouquet.jpg)',
+                  backgroundImage: 'url(/images/hero/delivery-bouquet.webp)',
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                 }}

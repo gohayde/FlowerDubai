@@ -75,8 +75,10 @@ export default function Chocolates() {
               }}
             >
               <img
-                src="/images/products/chocolate-gift.png"
+                src="/images/products/chocolate-gift.webp"
                 alt="Chocolate gift set with ribbon"
+                loading="lazy"
+                decoding="async"
                 style={{
                   width: '100%',
                   height: '100%',
@@ -172,8 +174,10 @@ export default function Chocolates() {
               }}
             >
               <img
-                src="/images/products/flower-box.png"
+                src="/images/products/flower-box.webp"
                 alt="Luxury flower box"
+                loading="lazy"
+                decoding="async"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
               />
             </div>
@@ -249,8 +253,10 @@ export default function Chocolates() {
               }}
             >
               <img
-                src="/images/products/artisan-grace.png"
+                src="/images/products/artisan-grace.webp"
                 alt="Custom gift set with flowers and chocolates"
+                loading="lazy"
+                decoding="async"
                 style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block', background: 'var(--color-blush-light)' }}
               />
             </div>

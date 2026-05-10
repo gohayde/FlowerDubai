@@ -421,9 +421,11 @@ export default function ExitIntentPopup() {
                     style={{ position: 'absolute', inset: 0 }}
                   >
                     <img
-                      src="/Media/Popup.png"
+                      src="/Media/Popup.webp"
                       alt=""
                       aria-hidden="true"
+                      loading="lazy"
+                      decoding="async"
                       style={{
                         width: '100%', height: '100%',
                         objectFit: 'cover', objectPosition: 'center',

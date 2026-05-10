@@ -77,6 +77,8 @@ export default function Footer() {
               <img
                 src="/Media/Logo.png"
                 alt="Flower Dubai"
+                loading="lazy"
+                decoding="async"
                 style={{ height: '3rem', width: 'auto', objectFit: 'contain', filter: 'brightness(0) invert(1)', opacity: 0.9 }}
               />
             </div>

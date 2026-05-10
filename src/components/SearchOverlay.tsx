@@ -154,6 +154,8 @@ export default function SearchOverlay() {
                       <img
                         src={product.image}
                         alt={product.name}
+                        loading="lazy"
+                        decoding="async"
                         style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                       />
                     </div>

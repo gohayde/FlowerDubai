@@ -36,7 +36,7 @@ export default function DeliveryBanner() {
           transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
           style={{
             borderRadius: '2rem',
-            backgroundImage: 'linear-gradient(90deg, rgba(255, 251, 246, 0.03) 0%, rgba(255, 251, 246, 0.08) 45%, rgba(255, 251, 246, 0.76) 67%, rgba(255, 251, 246, 0.91) 100%), url("/Media/Delivery.png")',
+            backgroundImage: 'linear-gradient(90deg, rgba(255, 251, 246, 0.03) 0%, rgba(255, 251, 246, 0.08) 45%, rgba(255, 251, 246, 0.76) 67%, rgba(255, 251, 246, 0.91) 100%), url("/Media/Delivery.webp")',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
@@ -185,7 +185,7 @@ export default function DeliveryBanner() {
         }
         @media (max-width: 640px) {
           .delivery-banner-grid {
-            background-image: linear-gradient(180deg, rgba(255, 251, 246, 0.08) 0%, rgba(255, 251, 246, 0.92) 58%, rgba(255, 251, 246, 0.98) 100%), url("/Media/Delivery.png") !important;
+            background-image: linear-gradient(180deg, rgba(255, 251, 246, 0.08) 0%, rgba(255, 251, 246, 0.92) 58%, rgba(255, 251, 246, 0.98) 100%), url("/Media/Delivery.webp") !important;
             background-size: cover !important;
             background-position: 27% center !important;
           }

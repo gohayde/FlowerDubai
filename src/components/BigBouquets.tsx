@@ -167,15 +167,17 @@ export default function BigBouquets() {
                   className="ken-burns"
                   style={{
                     position: 'absolute', inset: '-10%',
-                    backgroundImage: 'url(/images/gallery/peonies.png)',
+                    backgroundImage: 'url(/images/gallery/peonies.webp)',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     zIndex: 0,
                   }}
                 />
                 <img
-                  src="/images/products/big-surprise.png"
+                  src="/images/products/big-surprise.webp"
                   alt="Grand surprise bouquet — 100+ fresh stems for special occasions"
+                  loading="lazy"
+                  decoding="async"
                   style={{
                     position: 'absolute', inset: 0,
                     width: '100%', height: '100%',

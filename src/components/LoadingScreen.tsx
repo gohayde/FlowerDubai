@@ -37,6 +37,7 @@ export default function LoadingScreen() {
             <motion.img
               src="/Media/Logo.png"
               alt="Flower Dubai logo"
+              decoding="async"
               initial={{ scale: 0.9, opacity: 0 }}
               animate={phase !== 'exit' ? { scale: 1, opacity: 1 } : { scale: 1.05, opacity: 0 }}
               transition={{

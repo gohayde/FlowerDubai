@@ -68,8 +68,10 @@ export default function Categories() {
               style={{ maskImage: 'linear-gradient(to right, transparent 0%, transparent 15%, rgba(0,0,0,0.5) 45%, black 65%)', WebkitMaskImage: 'linear-gradient(to right, transparent 0%, transparent 15%, rgba(0,0,0,0.5) 45%, black 65%)' }}
             >
               <img 
-                src="/images/products/custom-bouquet.png" 
+                src="/images/products/custom-bouquet.webp" 
                 alt="Flower Bouquets" 
+                loading="lazy"
+                decoding="async"
                 style={{
                   width: '100%',
                   height: '100%',
@@ -109,8 +111,10 @@ export default function Categories() {
               style={{ top: '2rem', right: 0, bottom: 0, left: 0, maskImage: 'linear-gradient(to bottom, transparent 0%, transparent 5%, rgba(0,0,0,0.5) 30%, black 50%)', WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, transparent 5%, rgba(0,0,0,0.5) 30%, black 50%)' }}
             >
               <img 
-                src="/images/products/chocolate-gift.png" 
+                src="/images/products/chocolate-gift.webp" 
                 alt="Chocolates" 
+                loading="lazy"
+                decoding="async"
                 style={{
                   width: '100%',
                   height: '100%',
@@ -142,8 +146,10 @@ export default function Categories() {
               style={{ maskImage: 'linear-gradient(to right, transparent 0%, transparent 20%, rgba(0,0,0,0.5) 50%, black 75%)', WebkitMaskImage: 'linear-gradient(to right, transparent 0%, transparent 20%, rgba(0,0,0,0.5) 50%, black 75%)' }}
             >
               <img 
-                src="/images/products/big-surprise-1.png" 
+                src="/images/products/big-surprise-1.webp" 
                 alt="Big Bouquets" 
+                loading="lazy"
+                decoding="async"
                 style={{
                   width: '100%',
                   height: '100%',
@@ -180,8 +186,10 @@ export default function Categories() {
               style={{ maskImage: 'linear-gradient(to right, transparent 0%, transparent 20%, rgba(0,0,0,0.5) 50%, black 75%)', WebkitMaskImage: 'linear-gradient(to right, transparent 0%, transparent 20%, rgba(0,0,0,0.5) 50%, black 75%)' }}
             >
               <img 
-                src="/images/products/flower-box-1.png" 
+                src="/images/products/flower-box-1.webp" 
                 alt="Flower Boxes" 
+                loading="lazy"
+                decoding="async"
                 style={{
                   width: '100%',
                   height: '100%',

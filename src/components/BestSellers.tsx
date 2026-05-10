@@ -124,6 +124,7 @@ export default function BestSellers() {
                   src={product.image}
                   alt={product.name}
                   loading="lazy"
+                  decoding="async"
                   className="product-img"
                 />
               </div>

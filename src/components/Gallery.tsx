@@ -4,14 +4,14 @@ import { useInView } from '../hooks/useAnimations';
 import { ArrowRight } from 'lucide-react';
 
 const galleryItems = [
-  { src: '/images/gallery/peonies.png',           alt: 'Pink peonies closeup',         shape: 'arch-tall', span: 'row-span-2', label: 'Peonies',       bg: 'linear-gradient(155deg, oklch(93% 0.030 10) 0%, oklch(80% 0.072 8 / 0.7) 100%)' },
-  { src: '/images/products/artisan-grace.png',    alt: 'Artisan Grace bouquet',         shape: 'arch',      span: '',           label: 'Artisan Grace', bg: 'linear-gradient(145deg, oklch(93% 0.018 150) 0%, oklch(82% 0.055 10 / 0.5) 100%)' },
-  { src: '/images/gallery/roses.png',             alt: 'Roses in ceramic vase',         shape: 'arch',      span: '',           label: 'Rose Vase',     bg: 'linear-gradient(155deg, oklch(94% 0.015 12) 0%, oklch(82% 0.065 10 / 0.55) 100%)' },
-  { src: '/images/products/flower-box.png',       alt: 'Luxury flower box',             shape: 'arch-tall', span: 'row-span-2', label: 'Flower Box',    bg: 'linear-gradient(140deg, oklch(95% 0.012 55) 0%, oklch(90% 0.040 10 / 0.6) 100%)' },
-  { src: '/images/gallery/florist.png',           alt: 'Florist arranging flowers',     shape: 'arch',      span: '',           label: 'Studio',        bg: 'linear-gradient(150deg, oklch(93% 0.018 45) 0%, oklch(80% 0.072 8 / 0.5) 100%)' },
-  { src: '/images/products/blush-breeze.png',     alt: 'Blush Breeze bouquet',          shape: 'arch',      span: '',           label: 'Blush Breeze',  bg: 'linear-gradient(145deg, oklch(93% 0.030 10) 0%, oklch(72% 0.085 80 / 0.3) 100%)' },
-  { src: '/images/products/wild-elegance.png',    alt: 'Wild Elegance bouquet',         shape: 'arch',      span: '',           label: 'Wild Elegance', bg: 'linear-gradient(155deg, oklch(93% 0.030 10) 0%, oklch(78% 0.072 8 / 0.65) 100%)' },
-  { src: '/images/products/yellow-sunrise.png',   alt: 'Yellow Sunrise bouquet',        shape: 'arch',      span: '',           label: 'Yellow Sunrise', bg: 'linear-gradient(145deg, oklch(96% 0.022 80) 0%, oklch(93% 0.030 10 / 0.5) 100%)' },
+  { src: '/images/gallery/peonies.webp',           alt: 'Pink peonies closeup',         shape: 'arch-tall', span: 'row-span-2', label: 'Peonies',       bg: 'linear-gradient(155deg, oklch(93% 0.030 10) 0%, oklch(80% 0.072 8 / 0.7) 100%)' },
+  { src: '/images/products/artisan-grace.webp',    alt: 'Artisan Grace bouquet',         shape: 'arch',      span: '',           label: 'Artisan Grace', bg: 'linear-gradient(145deg, oklch(93% 0.018 150) 0%, oklch(82% 0.055 10 / 0.5) 100%)' },
+  { src: '/images/gallery/roses.webp',             alt: 'Roses in ceramic vase',         shape: 'arch',      span: '',           label: 'Rose Vase',     bg: 'linear-gradient(155deg, oklch(94% 0.015 12) 0%, oklch(82% 0.065 10 / 0.55) 100%)' },
+  { src: '/images/products/flower-box.webp',       alt: 'Luxury flower box',             shape: 'arch-tall', span: 'row-span-2', label: 'Flower Box',    bg: 'linear-gradient(140deg, oklch(95% 0.012 55) 0%, oklch(90% 0.040 10 / 0.6) 100%)' },
+  { src: '/images/gallery/florist.webp',           alt: 'Florist arranging flowers',     shape: 'arch',      span: '',           label: 'Studio',        bg: 'linear-gradient(150deg, oklch(93% 0.018 45) 0%, oklch(80% 0.072 8 / 0.5) 100%)' },
+  { src: '/images/products/blush-breeze.webp',     alt: 'Blush Breeze bouquet',          shape: 'arch',      span: '',           label: 'Blush Breeze',  bg: 'linear-gradient(145deg, oklch(93% 0.030 10) 0%, oklch(72% 0.085 80 / 0.3) 100%)' },
+  { src: '/images/products/wild-elegance.webp',    alt: 'Wild Elegance bouquet',         shape: 'arch',      span: '',           label: 'Wild Elegance', bg: 'linear-gradient(155deg, oklch(93% 0.030 10) 0%, oklch(78% 0.072 8 / 0.65) 100%)' },
+  { src: '/images/products/yellow-sunrise.webp',   alt: 'Yellow Sunrise bouquet',        shape: 'arch',      span: '',           label: 'Yellow Sunrise', bg: 'linear-gradient(145deg, oklch(96% 0.022 80) 0%, oklch(93% 0.030 10 / 0.5) 100%)' },
 ];
 
 export default function Gallery() {
@@ -95,6 +95,7 @@ export default function Gallery() {
                 src={item.src}
                 alt={item.alt}
                 loading="lazy"
+                decoding="async"
                 style={{
                   width: '100%', height: '100%',
                   objectFit: 'cover',

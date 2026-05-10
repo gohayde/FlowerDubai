@@ -155,6 +155,8 @@ export default function CartDrawer() {
                         <img
                           src={item.product.image}
                           alt={item.product.name}
+                          loading="lazy"
+                          decoding="async"
                           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                         />
                       </div>

@@ -8,10 +8,10 @@ const occasions = ['Birthday', 'Anniversary', 'Love & Romance', 'Congratulations
 const deliveryOptions = ['Immediate Delivery', 'Today', 'Schedule Date'];
 
 const previewImages: Record<string, string> = {
-  'Bouquet': '/images/products/bloom-fusion.png',
-  'Big Bouquet': '/images/products/big-surprise.png',
-  'Flower Box': '/images/products/flower-box.png',
-  'Chocolates': '/images/products/chocolate-gift.png',
+  'Bouquet': '/images/products/bloom-fusion.webp',
+  'Big Bouquet': '/images/products/big-surprise.webp',
+  'Flower Box': '/images/products/flower-box.webp',
+  'Chocolates': '/images/products/chocolate-gift.webp',
 };
 
 const basePrices: Record<string, number> = {
@@ -224,6 +224,8 @@ export default function BuildGift() {
                 transition={{ duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
                 src={previewImages[gift]}
                 alt={gift}
+                loading="lazy"
+                decoding="async"
                 style={{
                   width: '80%',
                   maxWidth: '280px',

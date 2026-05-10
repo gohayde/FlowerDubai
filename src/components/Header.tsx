@@ -90,6 +90,8 @@ export default function Header() {
             <img
               src="/Media/Logo.png"
               alt="Flower Dubai logo"
+              decoding="async"
+              fetchPriority="high"
               style={{
                 height: isScrolled ? '2rem' : '2.5rem',
                 width: 'auto',
@@ -356,6 +358,7 @@ export default function Header() {
                   <img
                     src="/Media/Logo.png"
                     alt="Flower Dubai logo"
+                    decoding="async"
                     style={{ height: '2rem', width: 'auto', objectFit: 'contain', mixBlendMode: 'multiply' }}
                     onError={(e) => {
                       e.currentTarget.style.display = 'none';

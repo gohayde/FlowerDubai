@@ -24,6 +24,8 @@ const MotionBackground = memo(function MotionBackground() {
           loop 
           muted 
           playsInline
+          preload="metadata"
+          poster="/images/hero/hero-bg.webp"
           onError={() => setVideoError(true)}
           style={{
             position: 'absolute',
@@ -42,7 +44,7 @@ const MotionBackground = memo(function MotionBackground() {
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
           style={{
             position: 'absolute', inset: '-2%', width: '104%', height: '104%',
-            backgroundImage: 'url("/images/hero/hero-bg.png")',
+            backgroundImage: 'url("/images/hero/hero-bg.webp")',
             backgroundSize: 'cover',
             backgroundPosition: 'right center',
           }}

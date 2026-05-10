@@ -113,7 +113,7 @@ export default function About() {
                   className="ken-burns"
                   style={{
                     position: 'absolute', inset: '-10%',
-                    backgroundImage: 'url(/images/about/roses-vase.jpg)',
+                    backgroundImage: 'url(/images/gallery/roses.webp)',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center 25%',
                   }}
@@ -131,8 +131,10 @@ export default function About() {
 
               {/* Real image */}
               <img
-                src="/images/gallery/roses.png"
+                src="/images/gallery/roses.webp"
                 alt="Fresh roses in a ceramic vase, arranged by Urban Rose florists"
+                loading="lazy"
+                decoding="async"
                 style={{
                   position: 'absolute', inset: 0,
                   width: '100%', height: '100%',

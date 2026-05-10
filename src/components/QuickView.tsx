@@ -96,6 +96,7 @@ export default function QuickView() {
                 <img
                   src={quickViewProduct.image}
                   alt={quickViewProduct.name}
+                  decoding="async"
                   style={{
                     position: 'relative',
                     zIndex: 2,
