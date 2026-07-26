@@ -10,14 +10,16 @@
 
   --color-cream: oklch(97% 0.008 55);
   --color-cream-dark: oklch(95% 0.010 52);
-  --color-blush: oklch(95% 0.010 52); /* Replaced with cream-dark */
-  --color-blush-light: oklch(97% 0.008 55); /* Replaced with cream */
-  --color-rose: oklch(72% 0.085 80); /* Replaced with gold */
-  --color-dusty-rose: oklch(72% 0.085 80); /* Replaced with gold */
-  --color-berry: oklch(18% 0.006 60); /* Replaced with charcoal */
-  --color-wine: oklch(18% 0.006 60); /* Replaced with charcoal */
-  --color-wine-light: oklch(24% 0.008 58); /* Replaced with charcoal-mid */
-  --color-lilac: oklch(95% 0.010 52); /* Replaced with cream-dark */
+  --color-blush: oklch(82% 0.065 10);
+  --color-blush-light: oklch(93% 0.030 10);
+  --color-rose: oklch(62% 0.115 12);
+  --color-dusty-rose: oklch(55% 0.105 12);
+  --color-berry: oklch(38% 0.115 350);
+  --color-wine: oklch(38% 0.115 350);
+  --color-lilac: oklch(93% 0.030 10);
+  --color-garden: oklch(40% 0.075 150);
+  --color-garden-light: oklch(46% 0.080 150);
+  --color-sage: oklch(65% 0.050 150);
   --color-charcoal: oklch(18% 0.006 60);
   --color-charcoal-mid: oklch(24% 0.008 58);
   --color-muted: oklch(52% 0.018 55);
@@ -26,7 +28,6 @@
   --color-warm-white: oklch(99% 0.004 60);
 
   --ease-bloom: cubic-bezier(0.32, 0.72, 0, 1);
-  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   --ease-cinematic: cubic-bezier(0.77, 0, 0.175, 1);
 }
 
@@ -309,9 +310,16 @@ body {
   box-shadow: 0 2px 24px rgba(24,16,8,0.06), inset 0 1px 0 rgba(255,255,255,0.85), inset 0 -1px 0 rgba(24,16,8,0.04);
 }
 
-/* ─── Custom Cursor ─── */
+/* ─── Custom Cursor ───
+   Native cursor stays visible until CustomCursor confirms it has taken
+   over (adds .custom-cursor-active to <html> on first real mousemove).
+   Prevents an invisible cursor if JS is slow, errors, or never hydrates. */
 @media (hover: hover) and (pointer: fine) {
-  *, *::before, *::after { cursor: none !important; }
+  html.custom-cursor-active *,
+  html.custom-cursor-active *::before,
+  html.custom-cursor-active *::after {
+    cursor: none !important;
+  }
 }
 
 /* ════════════════════════════════════════════
@@ -446,12 +454,6 @@ body {
 .stagger-children.is-visible > *:nth-child(4)  { opacity: 1; transform: none; transition-delay: 240ms; }
 .stagger-children.is-visible > *:nth-child(5)  { opacity: 1; transform: none; transition-delay: 320ms; }
 .stagger-children.is-visible > *:nth-child(6)  { opacity: 1; transform: none; transition-delay: 400ms; }
-
-/* Accordion */
-.accordion-content {
-  overflow: hidden;
-  transition: max-height 500ms var(--ease-bloom), opacity 400ms var(--ease-bloom);
-}
 
 /* Spotlight card */
 .spotlight-card { isolation: isolate; }

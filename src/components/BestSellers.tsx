@@ -220,6 +220,14 @@ export default function BestSellers() {
           transition: transform 250ms;
         }
         .fav-btn:hover { transform: scale(1.15); }
+        @media (pointer: coarse) {
+          .fav-btn {
+            width: 2.75rem;
+            height: 2.75rem;
+            top: 0.25rem;
+            right: 0.25rem;
+          }
+        }
 
         /* ── Circle blob behind image ── */
         .product-img-wrap {
@@ -322,6 +330,9 @@ export default function BestSellers() {
           background: #c8566b;
           color: white;
           border-color: #c8566b;
+        }
+        @media (pointer: coarse) {
+          .cart-btn { width: 2.75rem; height: 2.75rem; }
         }
         .cart-added {
           width: 2rem;

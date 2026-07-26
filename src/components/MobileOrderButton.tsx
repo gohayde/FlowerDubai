@@ -24,8 +24,8 @@ export default function MobileOrderButton() {
       onClick={openCart}
       className="fixed z-50 md:hidden flex items-center justify-center"
       style={{
-        bottom: '1.5rem',
-        right: '1.5rem',
+        bottom: 'max(1.5rem, calc(env(safe-area-inset-bottom) + 1rem))',
+        left: 'max(1.5rem, calc(env(safe-area-inset-left) + 1.5rem))',
         width: '3.5rem',
         height: '3.5rem',
         borderRadius: '50%',

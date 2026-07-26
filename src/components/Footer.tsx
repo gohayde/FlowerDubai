@@ -5,7 +5,7 @@ const shopLinks = [
   { label: 'Flower Bouquets', href: '#products' },
   { label: 'Big Bouquets',    href: '#big-bouquets' },
   { label: 'Chocolates',      href: '#chocolates' },
-  { label: 'Flower Boxes',    href: '#chocolates' },
+  { label: 'Flower Boxes',    href: '#build-gift' },
 ];
 
 const helpLinks = [

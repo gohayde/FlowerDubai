@@ -12,7 +12,10 @@ export default function CustomCursor() {
 
     const move = (e: MouseEvent) => {
       setPos({ x: e.clientX, y: e.clientY });
-      if (!visible) setVisible(true);
+      if (!visible) {
+        setVisible(true);
+        document.documentElement.classList.add('custom-cursor-active');
+      }
       const target = e.target as HTMLElement;
       setIsPointer(
         window.getComputedStyle(target).cursor === 'pointer' ||
@@ -27,6 +30,7 @@ export default function CustomCursor() {
     return () => {
       window.removeEventListener('mousemove', move);
       document.removeEventListener('mouseleave', leave);
+      document.documentElement.classList.remove('custom-cursor-active');
     };
   }, [visible]);
 

@@ -7,10 +7,14 @@ import { products } from '../data/products';
 export default function SearchOverlay() {
   const { isSearchOpen, closeSearch, searchQuery, setSearchQuery, addItem, openCart } = useCartStore();
   const inputRef = useRef<HTMLInputElement>(null);
+  const triggerRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     if (isSearchOpen) {
+      triggerRef.current = document.activeElement as HTMLElement;
       setTimeout(() => inputRef.current?.focus(), 100);
+    } else {
+      triggerRef.current?.focus();
     }
   }, [isSearchOpen]);
 
@@ -53,6 +57,9 @@ export default function SearchOverlay() {
           onClick={closeSearch}
         >
           <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Search products"
             initial={{ y: -30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -20, opacity: 0 }}
@@ -93,8 +100,8 @@ export default function SearchOverlay() {
                 onClick={closeSearch}
                 aria-label="Close search"
                 style={{
-                  width: '2rem',
-                  height: '2rem',
+                  width: '2.75rem',
+                  height: '2.75rem',
                   borderRadius: '50%',
                   background: 'var(--color-blush-light)',
                   border: 'none',

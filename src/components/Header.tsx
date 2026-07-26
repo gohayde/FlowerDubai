@@ -8,8 +8,8 @@ const shopItems = [
   { label: 'Bouquets', href: '#products' },
   { label: 'Big Bouquets', href: '#big-bouquets' },
   { label: 'Chocolates', href: '#chocolates' },
-  { label: 'Flower Boxes', href: '#flower-boxes' },
-  { label: 'Gift Baskets', href: '#gift-baskets' },
+  { label: 'Flower Boxes', href: '#build-gift' },
+  { label: 'Gift Baskets', href: '#build-gift' },
 ];
 
 const navLinks = [

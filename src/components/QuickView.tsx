@@ -1,11 +1,29 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { X, ShoppingBag, Minus, Plus } from 'lucide-react';
 import { useCartStore } from '../store/cartStore';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function QuickView() {
   const { isQuickViewOpen, quickViewProduct, closeQuickView, addItem, openCart } = useCartStore();
   const [qty, setQty] = useState(1);
+  const closeBtnRef = useRef<HTMLButtonElement>(null);
+  const triggerRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (isQuickViewOpen) {
+      triggerRef.current = document.activeElement as HTMLElement;
+      closeBtnRef.current?.focus();
+    } else {
+      triggerRef.current?.focus();
+    }
+  }, [isQuickViewOpen]);
+
+  useEffect(() => {
+    if (!isQuickViewOpen) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') closeQuickView(); };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [isQuickViewOpen, closeQuickView]);
 
   const handleAdd = () => {
     if (!quickViewProduct) return;
@@ -29,6 +47,9 @@ export default function QuickView() {
             style={{ background: 'rgba(31, 31, 31, 0.5)', backdropFilter: 'blur(6px)' }}
           />
           <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-label={`Quick view — ${quickViewProduct.name}`}
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -47,14 +68,15 @@ export default function QuickView() {
           >
             {/* Close */}
             <button
+              ref={closeBtnRef}
               onClick={closeQuickView}
               aria-label="Close quick view"
               className="absolute z-10"
               style={{
                 top: '1rem',
                 right: '1rem',
-                width: '2.5rem',
-                height: '2.5rem',
+                width: '2.75rem',
+                height: '2.75rem',
                 borderRadius: '50%',
                 background: 'white',
                 border: 'none',
@@ -96,11 +118,13 @@ export default function QuickView() {
                 <img
                   src={quickViewProduct.image}
                   alt={quickViewProduct.name}
+                  loading="lazy"
                   decoding="async"
                   style={{
                     position: 'relative',
                     zIndex: 2,
                     width: '85%',
+                    aspectRatio: '1 / 1',
                     objectFit: 'contain',
                     filter: 'drop-shadow(0 10px 30px rgba(0,0,0,0.06))',
                   }}
@@ -122,6 +146,7 @@ export default function QuickView() {
                     fontWeight: 500,
                     color: 'var(--color-charcoal)',
                     marginBottom: '0.75rem',
+                    overflowWrap: 'break-word',
                   }}
                 >
                   {quickViewProduct.name}
@@ -164,8 +189,8 @@ export default function QuickView() {
                     <button
                       onClick={() => setQty(Math.max(1, qty - 1))}
                       style={{
-                        width: '2.5rem',
-                        height: '2.5rem',
+                        width: '2.75rem',
+                        height: '2.75rem',
                         border: 'none',
                         background: 'transparent',
                         cursor: 'pointer',
@@ -180,8 +205,8 @@ export default function QuickView() {
                     <button
                       onClick={() => setQty(qty + 1)}
                       style={{
-                        width: '2.5rem',
-                        height: '2.5rem',
+                        width: '2.75rem',
+                        height: '2.75rem',
                         border: 'none',
                         background: 'transparent',
                         cursor: 'pointer',

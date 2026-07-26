@@ -1,9 +1,28 @@
+import { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, Minus, Plus, Trash2, ShoppingBag } from 'lucide-react';
 import { useCartStore } from '../store/cartStore';
 
 export default function CartDrawer() {
   const { items, isOpen, closeCart, updateQuantity, removeItem, totalPrice } = useCartStore();
+  const closeBtnRef = useRef<HTMLButtonElement>(null);
+  const triggerRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      triggerRef.current = document.activeElement as HTMLElement;
+      closeBtnRef.current?.focus();
+    } else {
+      triggerRef.current?.focus();
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') closeCart(); };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [isOpen, closeCart]);
 
   return (
     <AnimatePresence>
@@ -22,6 +41,9 @@ export default function CartDrawer() {
 
           {/* Drawer */}
           <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Shopping cart"
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
@@ -69,11 +91,12 @@ export default function CartDrawer() {
                 </span>
               </div>
               <button
+                ref={closeBtnRef}
                 onClick={closeCart}
                 aria-label="Close cart"
                 style={{
-                  width: '2.25rem',
-                  height: '2.25rem',
+                  width: '2.75rem',
+                  height: '2.75rem',
                   borderRadius: '50%',
                   background: 'var(--color-blush-light)',
                   border: 'none',
@@ -163,6 +186,7 @@ export default function CartDrawer() {
                       <div className="flex-1 flex flex-col justify-between" style={{ minWidth: 0 }}>
                         <div>
                           <p
+                            title={item.product.name}
                             style={{
                               fontFamily: 'var(--font-serif)',
                               fontSize: '0.9375rem',
@@ -193,8 +217,8 @@ export default function CartDrawer() {
                               onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
                               aria-label="Decrease quantity"
                               style={{
-                                width: '2rem',
-                                height: '2rem',
+                                width: '2.75rem',
+                                height: '2.75rem',
                                 border: 'none',
                                 background: 'transparent',
                                 cursor: 'pointer',
@@ -220,8 +244,8 @@ export default function CartDrawer() {
                               onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
                               aria-label="Increase quantity"
                               style={{
-                                width: '2rem',
-                                height: '2rem',
+                                width: '2.75rem',
+                                height: '2.75rem',
                                 border: 'none',
                                 background: 'transparent',
                                 cursor: 'pointer',
@@ -238,8 +262,8 @@ export default function CartDrawer() {
                             onClick={() => removeItem(item.product.id)}
                             aria-label="Remove item"
                             style={{
-                              width: '2rem',
-                              height: '2rem',
+                              width: '2.75rem',
+                              height: '2.75rem',
                               borderRadius: '50%',
                               border: 'none',
                               background: 'transparent',

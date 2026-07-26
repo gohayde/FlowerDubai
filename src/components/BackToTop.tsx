@@ -23,8 +23,8 @@ export default function BackToTop() {
           aria-label="Back to top"
           style={{
             position: 'fixed',
-            bottom: 'calc(1.75rem + 3.25rem + 0.75rem)',
-            right: '1.75rem',
+            bottom: 'max(calc(1.75rem + 3.25rem + 0.75rem), calc(env(safe-area-inset-bottom) + 5rem))',
+            right: 'max(1.75rem, calc(env(safe-area-inset-right) + 1.75rem))',
             zIndex: 9000,
             width: '3.25rem',
             height: '3.25rem',

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import Lenis from 'lenis';
 import { useGsapAnimations } from './hooks/useGsap';
 import './index.css';
@@ -8,14 +8,18 @@ import Hero from './components/Hero';
 import TrustBar from './components/TrustBar';
 import Categories from './components/Categories';
 import BestSellers from './components/BestSellers';
-import ExitIntentPopup from './components/ExitIntentPopup';
+import ImmediateDelivery from './components/ImmediateDelivery';
+import About from './components/About';
+import BigBouquets from './components/BigBouquets';
+import Chocolates from './components/Chocolates';
+import BuildGift from './components/BuildGift';
+import Gallery from './components/Gallery';
+import DeliveryAreas from './components/DeliveryAreas';
+import OfferBanner from './components/OfferBanner';
 import Reviews from './components/Reviews';
 import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import CartDrawer from './components/CartDrawer';
-import QuickView from './components/QuickView';
-import SearchOverlay from './components/SearchOverlay';
 import MobileOrderButton from './components/MobileOrderButton';
 import LoadingScreen from './components/LoadingScreen';
 import ScrollProgress from './components/ScrollProgress';
@@ -23,6 +27,12 @@ import CustomCursor from './components/CustomCursor';
 import BackToTop from './components/BackToTop';
 import WhatsAppWidget from './components/WhatsAppWidget';
 import DeliveryBanner from './components/DeliveryBanner';
+
+// Interaction-triggered overlays: not needed for first paint, deferred to shrink the initial bundle.
+const CartDrawer = lazy(() => import('./components/CartDrawer'));
+const QuickView = lazy(() => import('./components/QuickView'));
+const SearchOverlay = lazy(() => import('./components/SearchOverlay'));
+const ExitIntentPopup = lazy(() => import('./components/ExitIntentPopup'));
 
 function App() {
   useGsapAnimations();
@@ -61,6 +71,14 @@ function App() {
         <TrustBar />
         <Categories />
         <BestSellers />
+        <ImmediateDelivery />
+        <About />
+        <BigBouquets />
+        <Chocolates />
+        <BuildGift />
+        <Gallery />
+        <DeliveryAreas />
+        <OfferBanner />
         <Reviews />
         <DeliveryBanner />
         <FAQ />
@@ -69,13 +87,15 @@ function App() {
 
       <Footer />
 
-      {/* Overlays */}
-      <CartDrawer />
-      <QuickView />
-      <SearchOverlay />
+      {/* Overlays — lazy, so idle users never pay for this code */}
+      <Suspense fallback={null}>
+        <CartDrawer />
+        <QuickView />
+        <SearchOverlay />
+        <ExitIntentPopup />
+      </Suspense>
       <MobileOrderButton />
       <BackToTop />
-      <ExitIntentPopup />
       <WhatsAppWidget />
     </>
   );

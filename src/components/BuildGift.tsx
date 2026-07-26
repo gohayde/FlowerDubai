@@ -31,7 +31,7 @@ export default function BuildGift() {
   const price = basePrices[gift] + (delivery === 'Immediate Delivery' ? 50 : 0);
 
   return (
-    <section ref={ref} className="section-padding" style={{ background: 'white' }}>
+    <section ref={ref} id="build-gift" className="section-padding" style={{ background: 'white' }}>
       <div className="container-main">
         {/* Header */}
         <div className="text-center" style={{ marginBottom: 'clamp(3rem, 5vw, 4rem)' }}>

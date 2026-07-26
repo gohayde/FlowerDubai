@@ -30,8 +30,8 @@ export default function WhatsAppWidget() {
           whileTap={{ scale: 0.96 }}
           style={{
             position: 'fixed',
-            right: '1.75rem',
-            bottom: '1.75rem',
+            right: 'max(1.75rem, calc(env(safe-area-inset-right) + 1.75rem))',
+            bottom: 'max(1.75rem, calc(env(safe-area-inset-bottom) + 1.25rem))',
             zIndex: 9000,
             display: 'inline-flex',
             alignItems: 'center',
