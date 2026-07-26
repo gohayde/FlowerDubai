@@ -8,14 +8,10 @@ import Hero from './components/Hero';
 import TrustBar from './components/TrustBar';
 import Categories from './components/Categories';
 import BestSellers from './components/BestSellers';
-import ImmediateDelivery from './components/ImmediateDelivery';
 import About from './components/About';
 import BigBouquets from './components/BigBouquets';
-import Chocolates from './components/Chocolates';
 import BuildGift from './components/BuildGift';
-import Gallery from './components/Gallery';
 import DeliveryAreas from './components/DeliveryAreas';
-import OfferBanner from './components/OfferBanner';
 import Reviews from './components/Reviews';
 import FAQ from './components/FAQ';
 import Contact from './components/Contact';
@@ -23,7 +19,6 @@ import Footer from './components/Footer';
 import MobileOrderButton from './components/MobileOrderButton';
 import LoadingScreen from './components/LoadingScreen';
 import ScrollProgress from './components/ScrollProgress';
-import CustomCursor from './components/CustomCursor';
 import BackToTop from './components/BackToTop';
 import WhatsAppWidget from './components/WhatsAppWidget';
 import DeliveryBanner from './components/DeliveryBanner';
@@ -63,7 +58,6 @@ function App() {
       <div className="grain-overlay" aria-hidden="true" />
       <LoadingScreen />
       <ScrollProgress />
-      <CustomCursor />
       <Header />
 
       <main id="main-content">
@@ -71,17 +65,13 @@ function App() {
         <TrustBar />
         <Categories />
         <BestSellers />
-        <ImmediateDelivery />
         <About />
         <BigBouquets />
-        <Chocolates />
         <BuildGift />
-        <Gallery />
         <DeliveryAreas />
-        <OfferBanner />
         <Reviews />
-        <DeliveryBanner />
         <FAQ />
+        <DeliveryBanner />
         <Contact />
       </main>
 

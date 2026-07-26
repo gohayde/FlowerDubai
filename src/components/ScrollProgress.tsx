@@ -1,17 +1,12 @@
-import { useEffect, useState } from 'react';
+import { motion, useScroll, useSpring } from 'motion/react';
 
 export default function ScrollProgress() {
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    const update = () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      setProgress(docHeight > 0 ? scrollTop / docHeight : 0);
-    };
-    window.addEventListener('scroll', update, { passive: true });
-    return () => window.removeEventListener('scroll', update);
-  }, []);
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 280,
+    damping: 40,
+    restDelta: 0.001,
+  });
 
   return (
     <div
@@ -26,13 +21,12 @@ export default function ScrollProgress() {
         background: 'rgba(248,184,197,0.15)',
       }}
     >
-      <div
+      <motion.div
         style={{
           height: '100%',
-          width: `${progress * 100}%`,
-          background: 'linear-gradient(to right, var(--color-blush), var(--color-rose), var(--color-gold))',
-          transition: 'width 80ms linear',
+          scaleX,
           transformOrigin: 'left',
+          background: 'linear-gradient(to right, var(--color-blush), var(--color-rose), var(--color-gold))',
         }}
       />
     </div>

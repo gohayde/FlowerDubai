@@ -54,7 +54,7 @@ export default function QuickView() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.35, ease: [0.32, 0.72, 0, 1] }}
-            className="fixed z-[80] left-1/2 top-1/2"
+            className="quick-view-modal fixed z-[80] left-1/2 top-1/2"
             style={{
               transform: 'translate(-50%, -50%)',
               width: '90%',
@@ -229,8 +229,14 @@ export default function QuickView() {
 
             <style>{`
               @media (max-width: 640px) {
-                .fixed[style*="max-width: 720px"] .grid {
+                .quick-view-modal {
+                  width: 94% !important;
+                  max-height: 90vh !important;
+                }
+                .quick-view-modal .grid {
                   grid-template-columns: 1fr !important;
+                  overflow-y: auto;
+                  max-height: 90vh;
                 }
               }
             `}</style>

@@ -1,7 +1,6 @@
 import { motion } from 'motion/react';
 import { useInView } from '../hooks/useAnimations';
 import { MapPin, ArrowRight } from 'lucide-react';
-import { deliveryAreas } from '../data/products';
 
 export default function DeliveryAreas() {
   const { ref, isInView } = useInView();
@@ -82,56 +81,28 @@ export default function DeliveryAreas() {
             </motion.a>
           </div>
 
-          {/* Right — area chips, flowing organic */}
+          {/* Right — real map embed */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.25, duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
-            style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', paddingTop: '0.5rem' }}
+            style={{
+              borderRadius: '1.75rem',
+              overflow: 'hidden',
+              border: '1px solid rgba(248,184,197,0.2)',
+              aspectRatio: '16 / 10',
+              boxShadow: '0 20px 50px rgba(24,16,8,0.06)',
+            }}
           >
-            {deliveryAreas.map((area, i) => (
-              <motion.span
-                key={area}
-                initial={{ opacity: 0, scale: 0.92 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{
-                  delay: 0.3 + i * 0.04,
-                  duration: 0.4,
-                  ease: [0.32, 0.72, 0, 1],
-                }}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.375rem',
-                  padding: '0.5rem 1.125rem',
-                  borderRadius: '9999px',
-                  background: 'var(--color-warm-white)',
-                  border: '1px solid rgba(248,184,197,0.2)',
-                  fontFamily: 'var(--font-sans)',
-                  fontSize: '0.8125rem',
-                  fontWeight: 500,
-                  color: 'var(--color-charcoal)',
-                  transition: 'all 350ms cubic-bezier(0.32,0.72,0,1)',
-                  cursor: 'default',
-                }}
-                whileHover={{
-                  background: 'var(--color-blush-light)',
-                  borderColor: 'var(--color-blush)',
-                }}
-              >
-                <span
-                  style={{
-                    width: '5px',
-                    height: '5px',
-                    borderRadius: '50%',
-                    background: 'var(--color-wine)',
-                    flexShrink: 0,
-                    display: 'inline-block',
-                  }}
-                />
-                {area}
-              </motion.span>
-            ))}
+            <iframe
+              title="Flower Dubai location and delivery coverage map"
+              src="https://www.google.com/maps?q=19+Sheikh+Zayed+Rd,+Trade+Center,+Dubai&output=embed"
+              width="100%"
+              height="100%"
+              style={{ border: 0, display: 'block' }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </motion.div>
         </div>
       </div>

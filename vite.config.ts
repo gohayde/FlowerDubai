@@ -9,4 +9,16 @@ export default defineConfig({
     port: 3000,
     hmr: process.env.DISABLE_HMR !== 'true',
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ['react', 'react-dom'],
+          motion: ['motion'],
+          gsap: ['gsap'],
+          lenis: ['lenis'],
+        },
+      },
+    },
+  },
 })

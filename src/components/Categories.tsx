@@ -58,7 +58,7 @@ export default function Categories() {
               minHeight: '400px'
             }}
           >
-            <div className="relative z-10 max-w-[50%]">
+            <div className="relative z-10 max-w-[80%] md:max-w-[50%]">
               <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', lineHeight: 1.1, color: 'var(--color-charcoal)', marginBottom: '1rem' }}>Flower Bouquets</h3>
               <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.9375rem', color: 'rgba(24,16,8,0.6)', marginBottom: '2rem', lineHeight: 1.5 }}>Hand-tied arrangements featuring the season's finest blooms.</p>
               <span className="uppercase tracking-[0.2em] text-[0.6875rem] font-medium text-black border-b border-black pb-1 transition-colors group-hover:text-[var(--color-rose)] group-hover:border-[var(--color-rose)]">Shop Collection</span>
@@ -159,7 +159,7 @@ export default function Categories() {
                 }}
               />
             </div>
-            <div className="relative z-10 max-w-[50%]">
+            <div className="relative z-10 max-w-[80%] md:max-w-[50%]">
               <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', lineHeight: 1.1, color: 'var(--color-charcoal)', marginBottom: '0.5rem' }}>Big Bouquets</h3>
               <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.875rem', color: 'rgba(24,16,8,0.6)', marginBottom: '1.5rem', lineHeight: 1.5 }}>Make an unforgettable statement.</p>
               <span className="uppercase tracking-[0.2em] text-[0.6875rem] font-medium text-black border-b border-black pb-1 transition-colors group-hover:text-[var(--color-rose)] group-hover:border-[var(--color-rose)]">Shop Grand Gifts</span>
@@ -199,7 +199,7 @@ export default function Categories() {
                 }}
               />
             </div>
-            <div className="relative z-10 max-w-[50%]">
+            <div className="relative z-10 max-w-[80%] md:max-w-[50%]">
               <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', lineHeight: 1.1, color: 'var(--color-charcoal)', marginBottom: '0.5rem' }}>Flower Boxes</h3>
               <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.875rem', color: 'rgba(24,16,8,0.6)', marginBottom: '1.5rem', lineHeight: 1.5 }}>Modern, elegant, and ready to display.</p>
               <span className="uppercase tracking-[0.2em] text-[0.6875rem] font-medium text-black border-b border-black pb-1 transition-colors group-hover:text-[var(--color-rose)] group-hover:border-[var(--color-rose)]">Shop Boxes</span>

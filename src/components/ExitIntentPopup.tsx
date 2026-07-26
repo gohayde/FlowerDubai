@@ -28,20 +28,9 @@ export default function ExitIntentPopup() {
       }
     };
 
-    let mobileTimer: ReturnType<typeof setTimeout>;
-    const onScroll = () => {
-      clearTimeout(mobileTimer);
-      mobileTimer = setTimeout(() => {
-        if (!triggered.current) { triggered.current = true; setVisible(true); }
-      }, 25000);
-    };
-
     document.addEventListener('mouseleave', onMouseLeave);
-    window.addEventListener('scroll', onScroll, { passive: true });
     return () => {
       document.removeEventListener('mouseleave', onMouseLeave);
-      window.removeEventListener('scroll', onScroll);
-      clearTimeout(mobileTimer);
     };
   }, []);
 

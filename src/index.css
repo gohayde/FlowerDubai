@@ -310,18 +310,6 @@ body {
   box-shadow: 0 2px 24px rgba(24,16,8,0.06), inset 0 1px 0 rgba(255,255,255,0.85), inset 0 -1px 0 rgba(24,16,8,0.04);
 }
 
-/* ─── Custom Cursor ───
-   Native cursor stays visible until CustomCursor confirms it has taken
-   over (adds .custom-cursor-active to <html> on first real mousemove).
-   Prevents an invisible cursor if JS is slow, errors, or never hydrates. */
-@media (hover: hover) and (pointer: fine) {
-  html.custom-cursor-active *,
-  html.custom-cursor-active *::before,
-  html.custom-cursor-active *::after {
-    cursor: none !important;
-  }
-}
-
 /* ════════════════════════════════════════════
    ANIMATION KEYFRAMES
 ════════════════════════════════════════════ */
